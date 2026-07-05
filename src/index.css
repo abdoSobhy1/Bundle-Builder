@@ -1,4 +1,19 @@
 @import "tailwindcss";
+@import "@qpokychuk/gilroy/index.css";
+
+@font-face {
+  font-family: "TT Norms Pro";
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src:
+    url("https://statics.cookunity.com/fonts/tt-norms-pro/tt-norms-pro-bold.woff2")
+      format("woff2"),
+    url("https://statics.cookunity.com/fonts/tt-norms-pro/tt-norms-pro-bold.woff")
+      format("woff"),
+    url("https://statics.cookunity.com/fonts/tt-norms-pro/tt-norms-pro-bold.ttf")
+      format("truetype");
+}
 
 @theme {
   --color-accent: #4e2fd2;
@@ -8,6 +23,10 @@
   --color-highlight-green: #0aa288;
   --color-highlight-green-alt: #1df0bb;
   --color-light-blue-bg: #edf4ff;
+
+  --font-sans: "Gilroy", sans-serif;
+  --font-gilroy: "Gilroy", sans-serif;
+  --font-tt-norms: "TT Norms Pro", sans-serif;
 }
 
 *,
@@ -16,7 +35,7 @@
   box-sizing: border-box;
 }
 
-* {
+body {
   margin: 0;
-  padding: 0;
+  font-family: var(--font-sans);
 }

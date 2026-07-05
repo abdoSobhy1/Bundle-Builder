@@ -1,9 +1,7 @@
+import { BundleBuilder } from "./pages/BundleBuilder";
+
 function App() {
-  return (
-    <>
-      <h1 className="text-7xl text-red-700">Hello world</h1>
-    </>
-  );
+  return <BundleBuilder />;
 }
 
 export default App;
