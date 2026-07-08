@@ -1,12 +1,12 @@
-import productsData from "../assets/data/products.json";
 import type { Category } from "../types/category";
 import type { SelectionsState } from "../types/selections";
 
-const categories = productsData.categories as Category[];
-
 export function enforceBundleRules(
   selections: SelectionsState,
+  categories: Category[],
 ): SelectionsState {
+  if (!categories || categories.length === 0) return selections;
+
   const nextSelections = { ...selections };
 
   // Rule 1: Auto select/deselect the hub based on cameras

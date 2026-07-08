@@ -1,10 +1,9 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import clsx from "clsx";
 import { ProductCard } from "../ProductCard/ProductCard";
 import { useBundle } from "../../hooks/useBundle";
 import styles from "./Accordion.module.css";
 
-import productsData from "../../assets/data/products.json";
 import type { Category } from "../../types/category";
 
 import livestreamIcon from "../../assets/icons/livestream.svg";
@@ -20,11 +19,27 @@ const iconMap: Record<string, string> = {
   protection: protectionIcon,
 };
 
-const categories = productsData.categories as Category[];
+interface AccordionProps {
+  categories: Category[];
+}
 
-export function Accordion() {
+export function Accordion({ categories }: AccordionProps) {
   const [openStepId, setOpenStepId] = useState<string>(categories[0].id);
   const { selections } = useBundle();
+
+  const selectedCounts = useMemo(() => {
+    const counts: Record<string, number> = {};
+    categories.forEach((category) => {
+      counts[category.id] = category.products.reduce((count, prod) => {
+        const productSelections = selections[prod.id] || {};
+        const hasSelectedVariants = Object.values(productSelections).some(
+          (qty) => qty > 0,
+        );
+        return count + (hasSelectedVariants ? 1 : 0);
+      }, 0);
+    });
+    return counts;
+  }, [selections]);
 
   return (
     <div className={styles.container}>
@@ -32,13 +47,7 @@ export function Accordion() {
         const isOpen = openStepId === category.id;
         const iconSrc = iconMap[category.icon];
 
-        const selectedCount = category.products.reduce((count, prod) => {
-          const productSelections = selections[prod.id] || {};
-          const hasSelectedVariants = Object.values(productSelections).some(
-            (qty) => qty > 0,
-          );
-          return count + (hasSelectedVariants ? 1 : 0);
-        }, 0);
+        const selectedCount = selectedCounts[category.id];
 
         return (
           <div

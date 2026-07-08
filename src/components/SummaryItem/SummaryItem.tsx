@@ -53,12 +53,12 @@ export function SummaryItem({
       <div className={styles.itemPriceBox}>
         {product.prediscountPrice !== null && (
           <div className={styles.itemComparePrice}>
-            {formatPrice(product.prediscountPrice)}
+            {formatPrice(product.prediscountPrice * (qty ?? 1))}
             {isPlan && "/mo"}
           </div>
         )}
         <div className={styles.itemPrice}>
-          {product.price === 0 ? "FREE" : formatPrice(product.price)}
+          {product.price === 0 ? "FREE" : formatPrice(product.price * (qty ?? 1))}
           {isPlan && "/mo"}
         </div>
       </div>

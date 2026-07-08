@@ -1,17 +1,18 @@
 import { useMemo } from "react";
 import type { SelectionsState } from "../types/selections";
-import productsData from "../assets/data/products.json";
 import type { Category } from "../types/category";
 
-const categories = productsData.categories as Category[];
-
-export function useBundleTotals(selections: SelectionsState) {
+export function useBundleTotals(
+  selections: SelectionsState,
+  categories: Category[] | null,
+) {
   return useMemo(() => {
     let subtotal = 0;
     let total = 0;
 
-    categories.forEach((cat) => {
-      cat.products.forEach((prod) => {
+    if (categories) {
+      categories.forEach((cat) => {
+        cat.products.forEach((prod) => {
         const prodSelections = selections[prod.id] || {};
         prod.variants.forEach((variant) => {
           const qty = prodSelections[variant.id] || 0;
@@ -20,13 +21,14 @@ export function useBundleTotals(selections: SelectionsState) {
             subtotal += (prod.prediscountPrice ?? prod.price) * qty;
           }
         });
+        });
       });
-    });
+    }
 
     return {
       subtotal,
       total,
       savings: subtotal - total,
     };
-  }, [selections]);
+  }, [selections, categories]);
 }

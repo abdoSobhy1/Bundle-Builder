@@ -102,10 +102,17 @@
 .priceContainer {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 3px;
   flex-wrap: wrap;
   justify-content: flex-end;
   text-align: right;
+}
+
+@media (min-width: 1024px) {
+  .priceContainer {
+    flex-direction: column;
+    gap: 0;
+  }
 }
 
 .comparePrice {

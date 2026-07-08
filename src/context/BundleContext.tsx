@@ -1,6 +1,7 @@
 import { createContext, useState, type ReactNode } from "react";
 
 import type { SelectionsState } from "../types/selections";
+import type { Category } from "../types/category";
 import { useBundleTotals } from "../hooks/useBundleTotals";
 import { loadStateFromStorage, saveStateToStorage } from "../utils/storage";
 import { enforceBundleRules } from "../utils/bundleRules";
@@ -38,7 +39,13 @@ const defaultState: SelectionsState = {
   "cam-unlimited": { "cam-unlimited-monthly": 1 },
 };
 
-export function BundleProvider({ children }: { children: ReactNode }) {
+export function BundleProvider({
+  children,
+  categories,
+}: {
+  children: ReactNode;
+  categories: Category[] | null;
+}) {
   const [selections, setSelections] = useState<SelectionsState>(() =>
     loadStateFromStorage(defaultState),
   );
@@ -50,7 +57,7 @@ export function BundleProvider({ children }: { children: ReactNode }) {
     setTimeout(() => setSavedMessageVisible(false), 3000);
   };
 
-  const totals = useBundleTotals(selections);
+  const totals = useBundleTotals(selections, categories);
 
   const updateQuantity = (
     productId: string,
@@ -66,7 +73,9 @@ export function BundleProvider({ children }: { children: ReactNode }) {
         [productId]: productSelections,
       };
 
-      nextSelections = enforceBundleRules(nextSelections);
+      if (categories) {
+        nextSelections = enforceBundleRules(nextSelections, categories);
+      }
 
       return nextSelections;
     });

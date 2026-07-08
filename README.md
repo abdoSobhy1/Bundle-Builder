@@ -28,9 +28,17 @@ I solved this elegantly using modern CSS Grid. By transitioning `grid-template-r
 
 State can get tricky when products have multiple variants. I structured the Context API state (`selections[productId][variantId]`) to track each variant completely independently. Adding a Red sensor doesn't accidentally override the Blue sensor—they sync perfectly across the entire UI and the Review Panel.
 
-### Fully Data-Driven & Derived
+### Fully Data-Driven Architecture (Bonus JSON Server)
 
-The entire interface renders dynamically based on `src/assets/data/products.json`. Because the provided design only showed the visual layout for the "Cameras" section, I proactively derived the data and structures for the remaining sections (Plans, Sensors, Accessories) by carefully analyzing the line items in the Review Panel mockup. There are no hardcoded layouts here,this system is built to scale if new bundles or products are added in the future.
+The entire interface renders dynamically based on a robust, decoupled data architecture. The product catalog acts as a true external database located in `db/products.json`, served via a mock `json-server` API (`http://localhost:3001/products`).
+
+Because the provided design only showed the visual layout for the "Cameras" section, the data and structures for the remaining sections (Plans, Sensors, Accessories) were proactively derived by analyzing the line items in the Review Panel mockup. There are no hardcoded layouts—the system is built to scale seamlessly if new bundles or products are added in the future.
+
+### Clean Client/Server State Separation
+
+To manage asynchronous data effectively, a custom `useProductsData` hook handles all network operations. This architectural pattern keeps the "Server State" (the fetched product catalog) strictly isolated from the "Client State" (the user's cart selections inside the `BundleContext`).
+
+To ensure a premium user experience during network requests, the application features custom-designed, animated **Loading and Error states**. These micro-interactions match the premium aesthetic of the application, ensuring users are never left looking at a blank screen or unstyled text during data fetching or API failures.
 
 ### Local Storage Persistence
 
@@ -56,20 +64,10 @@ If you want to spin this up locally:
    ```bash
    npm install
    ```
-3. Start the Vite development server:
+3. Start the Vite development server and the JSON Server mock API concurrently:
    ```bash
    npm run dev
    ```
-4. Open your browser to the URL provided in the terminal (usually `http://localhost:5173`).
-
-### Building for Production
-
-To generate a heavily optimized production build, simply run:
-
-```bash
-npm run build
-```
-
----
+4. Open your browser to the URL provided in the terminal (typically `http://localhost:5173`). The mock database runs quietly in the background on `http://localhost:3001`.
 
 Thank you for taking time to review my submission!

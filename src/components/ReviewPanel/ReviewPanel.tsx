@@ -1,5 +1,4 @@
 import { useBundle } from "../../hooks/useBundle";
-import productsData from "../../assets/data/products.json";
 import type { Category } from "../../types/category";
 import styles from "./ReviewPanel.module.css";
 import lineItemStyles from "../SummaryItem/SummaryItem.module.css";
@@ -8,7 +7,11 @@ import lineItemStyles from "../SummaryItem/SummaryItem.module.css";
 import { SummaryItem } from "../SummaryItem/SummaryItem";
 import { ReviewPanelTotals } from "../ReviewPanelTotals/ReviewPanelTotals";
 
-export function ReviewPanel() {
+interface ReviewPanelProps {
+  categories: Category[];
+}
+
+export function ReviewPanel({ categories }: ReviewPanelProps) {
   const {
     selections,
     updateQuantity,
@@ -16,7 +19,6 @@ export function ReviewPanel() {
     savedMessageVisible,
     totals,
   } = useBundle();
-  const categories = productsData.categories as Category[];
 
   // Render selected items grouped by category
   const renderLineItems = () => {
