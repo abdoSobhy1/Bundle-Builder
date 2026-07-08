@@ -2,6 +2,28 @@
 
 Welcome to the **Bundle Builder** project! This is my submission for the Ecom Experts evaluation task. I've put a lot of care into ensuring this isn't just functional, but genuinely matches the provided design down to the finest detail.
 
+## Getting Started
+
+To run this project locally:
+
+### Prerequisites
+
+- Node.js (v18+ recommended)
+- npm
+
+### Installation & Running
+
+1. Clone or download the repository and navigate into the directory.
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the Vite development server and the JSON Server mock API concurrently:
+   ```bash
+   npm run dev
+   ```
+4. Open your browser to the URL provided in the terminal (typically `http://localhost:5173`). The mock database runs quietly in the background on `http://localhost:3001`.
+
 ## Why CSS Modules over Tailwind?
 
 One of the first big decisions I made was choosing **pure CSS Modules** instead of a utility-first framework like Tailwind CSS.
@@ -47,27 +69,5 @@ Accidentally closed the tab? No problem. The builder automatically persists your
 ### Custom Checkout Experience
 
 Instead of relying on a standard browser `alert()` for the checkout action, I built a polished, custom React Portal popup (`CheckoutPopup`). It's fully animated with CSS transitions, breaks out of the DOM hierarchy safely, and provides a much more premium feel that aligns with the rest of the high-quality design.
-
-## Getting Started
-
-If you want to spin this up locally:
-
-### Prerequisites
-
-- Node.js (v18+ recommended)
-- npm
-
-### Installation & Running
-
-1. Clone the repository and navigate into the directory.
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-3. Start the Vite development server and the JSON Server mock API concurrently:
-   ```bash
-   npm run dev
-   ```
-4. Open your browser to the URL provided in the terminal (typically `http://localhost:5173`). The mock database runs quietly in the background on `http://localhost:3001`.
 
 Thank you for taking time to review my submission!
