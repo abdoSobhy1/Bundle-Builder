@@ -1,0 +1,117 @@
+.lineItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding-bottom: 0.75rem;
+
+  &.plan {
+    gap: 3px;
+
+    .imageBox {
+      height: 24px;
+      width: 20px;
+      border-radius: 0;
+      background-color: transparent;
+    }
+
+    .itemTitle {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #000;
+
+      @media (min-width: 768px) and (max-width: 1023px) {
+        font-size: 1.25rem;
+      }
+
+      @media (min-width: 1024px) {
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+.imageBox {
+  display: flex;
+  height: 41px;
+  width: 41px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  background-color: white;
+}
+
+.image {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+.itemTitle {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #0b0d10;
+  flex: 1;
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .itemTitle {
+    font-size: 1.125rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .itemTitle {
+    font-size: 0.875rem;
+  }
+}
+
+.itemPriceBox {
+  text-align: right;
+  min-width: 3rem;
+}
+
+.itemComparePrice {
+  font-size: 0.75rem; /* 12px for mobile */
+  font-weight: 500;
+  color: #6b7280;
+  text-decoration: line-through;
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .itemComparePrice {
+    font-size: 1rem; /* 16px for tablet */
+  }
+}
+
+@media (min-width: 1024px) {
+  .itemComparePrice {
+    font-size: 0.875rem; /* 14px for desktop */
+  }
+}
+
+.itemPrice {
+  font-size: 0.75rem; /* 12px for mobile */
+  font-weight: 600;
+  color: var(--color-accent);
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .itemPrice {
+    font-size: 1rem; /* 16px for tablet */
+  }
+}
+
+@media (min-width: 1024px) {
+  .itemPrice {
+    font-size: 0.875rem; /* 14px for desktop */
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .itemPriceBox {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}

@@ -1,4 +1,4 @@
-import { BundleBuilder } from "./pages/BundleBuilder";
+import { BundleBuilder } from "./pages/BundleBuilder/BundleBuilder";
 
 function App() {
   return <BundleBuilder />;

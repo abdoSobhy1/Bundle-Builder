@@ -1,0 +1,89 @@
+.panel {
+  border-radius: 0;
+  background-color: var(--color-light-blue-bg);
+  padding-top: 15px;
+}
+
+@media (min-width: 768px) {
+  .panel {
+    border-radius: 0.625rem;
+  }
+}
+
+.headerWrapper {
+  margin-bottom: 0.625rem;
+}
+
+.headerSub {
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1.6px;
+  color: #484848;
+  padding-inline: 15px;
+}
+
+.headerTitle {
+  font-size: 1.375em;
+  font-weight: 600;
+  color: #1f1f1f;
+  margin-top: 1.25rem;
+  margin-bottom: 5px;
+  letter-spacing: 0.6px;
+  padding-inline: 1.25rem;
+}
+
+.headerDesc {
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin-bottom: 0;
+  padding-inline: 1.25rem;
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .headerDesc {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .headerDesc {
+    font-size: 0.875rem;
+  }
+}
+
+.container {
+  padding-inline: 1.25rem;
+}
+
+.categoryGroup {
+  margin-bottom: 0.625rem;
+  border-top: 1px solid #ced6de;
+  padding-top: 15px;
+}
+
+.categoryHeader {
+  margin-bottom: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 3%;
+  color: #a8b2bd;
+}
+
+/* Tablet Two-Column Layout */
+.panelGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .panel {
+    padding: 35px 20px 31px;
+  }
+
+  .panelGrid {
+    grid-template-columns: 1.17fr 1fr;
+    gap: 3.25rem;
+  }
+}

@@ -1,0 +1,190 @@
+.guaranteeBox {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.guaranteeImg {
+  height: 131px;
+  width: 131px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.guaranteeText {
+  display: none;
+}
+
+.guaranteeTitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 110%;
+  letter-spacing: 0.6px;
+  color: #1f1f1f;
+}
+
+.guaranteeDesc {
+  font-size: 1.125rem;
+  color: #1f1f1f;
+  line-height: 110%;
+  letter-spacing: 0.6px;
+}
+
+.totalsBox {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.totalsRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.affirmBadge {
+  background-color: var(--color-accent);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 5px 0.5rem;
+  border-radius: 0.25rem;
+  margin-bottom: 13px;
+  text-align: center;
+}
+
+.priceRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.totalsOld {
+  font-size: 1.125rem;
+  font-weight: 500;
+  letter-spacing: 0.25%;
+  color: #6f7882;
+  text-decoration: line-through;
+}
+
+.totalsTotal {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.13%;
+  color: var(--color-accent);
+}
+
+.checkoutBox {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.totalsSavings {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-green);
+  margin-bottom: 0.25rem;
+}
+
+.checkoutBtn {
+  width: 100%;
+  border-radius: 0.25rem;
+  background-color: var(--color-accent);
+  padding: 16px 13px;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  font-family: var(--font-tt-norms);
+  font-size: 1.0625rem;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.saveBtn {
+  font-size: 0.875rem;
+  color: #484848;
+  text-decoration: underline;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-style: italic;
+  margin-bottom: 31px;
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .desktopTotalsWrapper {
+    display: contents;
+  }
+
+  .guaranteeText {
+    display: block;
+  }
+
+  .totalsBox {
+    width: 100%;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+  }
+
+  .totalsRight {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .totalsTotal {
+    font-size: 1.75rem;
+  }
+
+  .totalsOld {
+    font-size: 1.375rem;
+  }
+
+  .affirmBadge {
+    font-size: 1rem;
+    letter-spacing: -5%;
+    margin-bottom: 0;
+  }
+  .totalsSavings {
+    font-size: 0.875rem;
+  }
+}
+
+@media (min-width: 1024px), (max-width: 767px) {
+  .rightColInner {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .desktopTotalsWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: 1.25rem;
+    margin-top: 1.5rem;
+    gap: 1rem;
+  }
+
+  .guaranteeBox {
+    margin: 0;
+  }
+
+  .totalsBox {
+    margin: 0;
+    flex: 1;
+  }
+
+  .guaranteeImg {
+    height: 78px;
+    width: 78px;
+  }
+
+  .checkoutBox {
+    padding-inline: 1.25rem;
+  }
+}
