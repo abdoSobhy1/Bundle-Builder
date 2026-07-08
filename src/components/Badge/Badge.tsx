@@ -3,11 +3,11 @@ import styles from "./Badge.module.css";
 
 export interface BadgeProps {
   price: number;
-  compareAtPrice: number | null;
+  prediscountPrice: number | null;
 }
 
-export function Badge({ price, compareAtPrice }: BadgeProps) {
-  const discount = calculateDiscount(price, compareAtPrice);
+export function Badge({ price, prediscountPrice }: BadgeProps) {
+  const discount = calculateDiscount(price, prediscountPrice);
 
   if (discount <= 0) return null;
 

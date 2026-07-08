@@ -2,11 +2,11 @@ import { useBundle } from "../../hooks/useBundle";
 import productsData from "../../assets/data/products.json";
 import type { Category } from "../../types/category";
 import styles from "./ReviewPanel.module.css";
-import lineItemStyles from "./ReviewPanelLineItem/ReviewPanelLineItem.module.css";
+import lineItemStyles from "../SummaryItem/SummaryItem.module.css";
 
 
-import { ReviewPanelLineItem } from "./ReviewPanelLineItem/ReviewPanelLineItem";
-import { ReviewPanelTotals } from "./ReviewPanelTotals/ReviewPanelTotals";
+import { SummaryItem } from "../SummaryItem/SummaryItem";
+import { ReviewPanelTotals } from "../ReviewPanelTotals/ReviewPanelTotals";
 
 export function ReviewPanel() {
   const {
@@ -35,7 +35,7 @@ export function ReviewPanel() {
           if (qty > 0) {
             if (category.id === "plans") {
               itemsToRender.push(
-                <ReviewPanelLineItem
+                <SummaryItem
                   key={`${product.id}-${variant.id}`}
                   product={product}
                   variant={variant}
@@ -44,7 +44,7 @@ export function ReviewPanel() {
               );
             } else {
               itemsToRender.push(
-                <ReviewPanelLineItem
+                <SummaryItem
                   key={`${product.id}-${variant.id}`}
                   product={product}
                   variant={variant}

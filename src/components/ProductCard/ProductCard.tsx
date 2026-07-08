@@ -39,7 +39,10 @@ export function ProductCard({ product }: ProductCardProps) {
   return (
     <div className={clsx(styles.card, isSelected && styles.cardSelected)}>
       <div className={styles.badgeContainer}>
-        <Badge price={product.price} compareAtPrice={product.compareAtPrice} />
+        <Badge
+          price={product.price}
+          prediscountPrice={product.prediscountPrice}
+        />
       </div>
 
       <div className={styles.content}>
@@ -56,13 +59,15 @@ export function ProductCard({ product }: ProductCardProps) {
 
           <p className={styles.description}>
             {product.description}{" "}
-            <a
-              href={product.learnMoreUrl}
-              className={styles.link}
-              target="_blank"
-              rel="noopener noreferrer">
-              Learn More
-            </a>
+            {product.learnMoreLink && (
+              <a
+                href={product.learnMoreLink}
+                className={styles.link}
+                target="_blank"
+                rel="noopener noreferrer">
+                Learn More
+              </a>
+            )}
           </p>
 
           {!hasSingleDefaultVariant && (
@@ -84,10 +89,10 @@ export function ProductCard({ product }: ProductCardProps) {
             />
 
             <div className={styles.priceContainer}>
-              {product.compareAtPrice !== null && (
+              {product.prediscountPrice !== null && (
                 <p className={styles.comparePrice}>
                   {product.comparePriceLabel ??
-                    formatPrice(product.compareAtPrice)}
+                    formatPrice(product.prediscountPrice)}
                 </p>
               )}
               <p className={styles.price}>

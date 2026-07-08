@@ -28,13 +28,17 @@ I solved this elegantly using modern CSS Grid. By transitioning `grid-template-r
 
 State can get tricky when products have multiple variants. I structured the Context API state (`selections[productId][variantId]`) to track each variant completely independently. Adding a Red sensor doesn't accidentally override the Blue sensor—they sync perfectly across the entire UI and the Review Panel.
 
-### Fully Data-Driven
+### Fully Data-Driven & Derived
 
-The entire interface renders dynamically based on `src/assets/data/products.json`. There are no hardcoded layouts here—this system is built to scale if new bundles or products are added in the future.
+The entire interface renders dynamically based on `src/assets/data/products.json`. Because the provided design only showed the visual layout for the "Cameras" section, I proactively derived the data and structures for the remaining sections (Plans, Sensors, Accessories) by carefully analyzing the line items in the Review Panel mockup. There are no hardcoded layouts here,this system is built to scale if new bundles or products are added in the future.
 
 ### Local Storage Persistence
 
 Accidentally closed the tab? No problem. The builder automatically persists your current selections to `localStorage`. When you come back, the app seamlessly re-hydrates your progress so you can pick up right where you left off.
+
+### Custom Checkout Experience
+
+Instead of relying on a standard browser `alert()` for the checkout action, I built a polished, custom React Portal popup (`CheckoutPopup`). It's fully animated with CSS transitions, breaks out of the DOM hierarchy safely, and provides a much more premium feel that aligns with the rest of the high-quality design.
 
 ## Getting Started
 

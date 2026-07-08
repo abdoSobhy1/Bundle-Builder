@@ -5,9 +5,12 @@ export function formatPrice(cents: number): string {
   }).format(cents / 100);
 }
 
-export function calculateDiscount(price: number, compareAtPrice: number | null): number {
-  if (!compareAtPrice || compareAtPrice <= price) {
+export function calculateDiscount(
+  price: number,
+  prediscountPrice: number | null,
+): number {
+  if (!prediscountPrice || prediscountPrice <= price) {
     return 0;
   }
-  return Math.round(((compareAtPrice - price) / compareAtPrice) * 100);
+  return Math.round(((prediscountPrice - price) / prediscountPrice) * 100);
 }

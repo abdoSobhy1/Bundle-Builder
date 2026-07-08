@@ -1,4 +1,6 @@
-import { formatPrice } from "../../../utils/price";
+import { useState } from "react";
+import { formatPrice } from "../../utils/price";
+import { CheckoutPopup } from "../CheckoutPopup/CheckoutPopup";
 import styles from "./ReviewPanelTotals.module.css";
 
 interface ReviewPanelTotalsProps {
@@ -16,8 +18,11 @@ export function ReviewPanelTotals({
   saveToStorage,
   savedMessageVisible,
 }: ReviewPanelTotalsProps) {
+  const [showPopup, setShowPopup] = useState(false);
+
   return (
-    <div className={styles.rightColInner}>
+    <>
+      <div className={styles.rightColInner}>
       <div className={styles.desktopTotalsWrapper}>
         <div className={styles.guaranteeBox}>
           <img
@@ -64,7 +69,7 @@ export function ReviewPanelTotals({
         )}
         <button
           className={styles.checkoutBtn}
-          onClick={() => alert("Checkout initiated!")}>
+          onClick={() => setShowPopup(true)}>
           Checkout
         </button>
 
@@ -74,6 +79,9 @@ export function ReviewPanelTotals({
             : "Save my system for later"}
         </button>
       </div>
-    </div>
+      </div>
+
+      {showPopup && <CheckoutPopup onClose={() => setShowPopup(false)} />}
+    </>
   );
 }

@@ -17,7 +17,7 @@ export function useBundleTotals(selections: SelectionsState) {
           const qty = prodSelections[variant.id] || 0;
           if (qty > 0) {
             total += prod.price * qty;
-            subtotal += (prod.compareAtPrice ?? prod.price) * qty;
+            subtotal += (prod.prediscountPrice ?? prod.price) * qty;
           }
         });
       });

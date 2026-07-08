@@ -1,9 +1,9 @@
-import { QuantityStepper } from "../../QuantityStepper/QuantityStepper";
-import { formatPrice } from "../../../utils/price";
-import styles from "./ReviewPanelLineItem.module.css";
-import type { Product, Variant } from "../../../types/product";
+import { QuantityStepper } from "../QuantityStepper/QuantityStepper";
+import { formatPrice } from "../../utils/price";
+import styles from "./SummaryItem.module.css";
+import type { Product, Variant } from "../../types/product";
 
-interface ReviewPanelLineItemProps {
+interface SummaryItemProps {
   product: Product;
   variant: Variant;
   qty?: number;
@@ -11,19 +11,23 @@ interface ReviewPanelLineItemProps {
   itemVariant?: "default" | "plan";
 }
 
-export function ReviewPanelLineItem({
+export function SummaryItem({
   product,
   variant,
   qty,
   updateQuantity,
   itemVariant = "default",
-}: ReviewPanelLineItemProps) {
+}: SummaryItemProps) {
   const isPlan = itemVariant === "plan";
 
   return (
     <div className={`${styles.lineItem} ${isPlan ? styles.plan : ""}`}>
       <div className={styles.imageBox}>
-        <img src={variant.image || ""} alt={variant.label} className={styles.image} />
+        <img
+          src={variant.image || ""}
+          alt={variant.label}
+          className={styles.image}
+        />
       </div>
 
       <h4 className={styles.itemTitle}>
@@ -47,13 +51,15 @@ export function ReviewPanelLineItem({
       )}
 
       <div className={styles.itemPriceBox}>
-        {product.compareAtPrice !== null && (
+        {product.prediscountPrice !== null && (
           <div className={styles.itemComparePrice}>
-            {formatPrice(product.compareAtPrice)}{isPlan && "/mo"}
+            {formatPrice(product.prediscountPrice)}
+            {isPlan && "/mo"}
           </div>
         )}
         <div className={styles.itemPrice}>
-          {product.price === 0 ? "FREE" : formatPrice(product.price)}{isPlan && "/mo"}
+          {product.price === 0 ? "FREE" : formatPrice(product.price)}
+          {isPlan && "/mo"}
         </div>
       </div>
     </div>

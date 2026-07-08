@@ -10,10 +10,10 @@ export interface Product {
   id: string;
   title: string;
   description: string;
-  learnMoreUrl?: string;
+  learnMoreLink?: string;
   badge: string | null;
   price: number;
-  compareAtPrice: number | null;
+  prediscountPrice: number | null;
   priceLabel?: string | null;
   comparePriceLabel?: string | null;
   variants: Variant[];
